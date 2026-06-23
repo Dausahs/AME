@@ -9,9 +9,9 @@ export default function Navbar() {
       <div className="max-w-[1440px] mx-auto flex items-center justify-between px-6 sm:px-12 py-4">
 
         {/* Logo Section */}
-        <div className="text-white text-xl font-semibold">
+        <a href="/" className="text-white text-xl font-semibold hover:text-[#FF9100] transition-colors">
           Logo
-        </div>
+        </a>
 
         {/* Links & Button Section */}
         <div className="hidden md:flex items-center space-x-8">

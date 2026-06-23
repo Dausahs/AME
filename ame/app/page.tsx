@@ -1,5 +1,6 @@
 import React from 'react';
 import { Bebas_Neue, Inter } from 'next/font/google';
+import MalaysiaMap from '@/components/MalaysiaMap';
 
 // Initialize fonts
 const bebas = Bebas_Neue({
@@ -73,17 +74,19 @@ export default function Home() {
 
       {/* 4. Scale & Locations Section - Target Height 500px */}
       <section
-        className="min-h-[500px] w-full relative flex items-center px-6 sm:px-12 lg:px-24 py-16 lg:py-0 bg-cover bg-center"
+        className="min-h-[700px] w-full relative flex items-center px-6 sm:px-12 lg:px-24 py-16 bg-cover bg-center"
         style={{ backgroundImage: "url('https://placehold.co/1920x500/1e293b/ffffff?text=Nationwide+Background')" }}
       >
         {/* Custom shade overlay: #092236 at 82% opacity */}
         <div className="absolute inset-0 bg-[#092236]/[0.82] z-0"></div>
 
         <div className="z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Map Placeholder Box */}
-          <div className="bg-[#e5e7eb] w-full h-[300px] sm:h-[350px] flex items-center justify-center text-gray-500 font-medium text-sm order-2 lg:order-1 rounded-sm z-10 relative">
-            Map That show our branch
+
+          {/* Map Section - Interactive vector map */}
+          <div className="relative w-full h-[350px] sm:h-[450px] lg:h-[600px] order-2 lg:order-1 z-10">
+            <MalaysiaMap />
           </div>
+
           <div className="flex flex-col items-start lg:items-end text-left lg:text-right order-1 lg:order-2">
             <h2 className={`${bebas.className} text-4xl sm:text-5xl lg:text-6xl uppercase leading-none mb-4 tracking-wide`}>
               <span className="text-[#FF9100]">Nationwide Scale.</span><br />
@@ -98,7 +101,7 @@ export default function Home() {
 
       {/* 5. Contact Us Section - Target Height 400px */}
       <section
-        className="min-h-[400px] w-full relative flex items-center px-6 sm:px-12 lg:px-24 py-16 lg:py-0 bg-cover bg-center"
+        className="min-h-[500px] lg:min-h-[400px] w-full relative flex items-center px-6 sm:px-12 lg:px-24 py-16 lg:py-0 bg-cover bg-center"
         style={{ backgroundImage: "url('https://placehold.co/1920x400/1e293b/ffffff?text=Contact+Background')" }}
       >
         {/* Custom shade overlay: #092236 at 82% opacity */}
@@ -113,10 +116,46 @@ export default function Home() {
               Ready to elevate your next stage? Contact our production teams in Penang or Kuala Lumpur to lock in your date.
             </p>
           </div>
-          {/* Contact Form Placeholder Box */}
-          <div className="bg-[#e5e7eb] w-full h-[250px] sm:h-[300px] flex items-center justify-center text-gray-500 font-medium text-sm rounded-sm z-10 relative">
-            Contact Us Form
+
+          {/* Custom Styled Contact Form */}
+          <div className="w-full z-10 relative bg-[#092236]/40 p-6 sm:p-8 rounded-md border border-gray-600/50 backdrop-blur-md shadow-xl">
+            <form className="flex flex-col gap-5">
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full bg-transparent border-b border-gray-400/60 px-2 py-2 text-white placeholder-gray-300 focus:outline-none focus:border-[#FF9100] transition-colors"
+                />
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="w-full bg-transparent border-b border-gray-400/60 px-2 py-2 text-white placeholder-gray-300 focus:outline-none focus:border-[#FF9100] transition-colors"
+                />
+              </div>
+
+              <input
+                type="text"
+                placeholder="Event Type / Location"
+                className="w-full bg-transparent border-b border-gray-400/60 px-2 py-2 text-white placeholder-gray-300 focus:outline-none focus:border-[#FF9100] transition-colors"
+              />
+
+              <textarea
+                placeholder="Tell us about your event requirements..."
+                rows={3}
+                className="w-full bg-transparent border-b border-gray-400/60 px-2 py-2 text-white placeholder-gray-300 focus:outline-none focus:border-[#FF9100] transition-colors resize-none"
+              ></textarea>
+
+              <button
+                type="button"
+                className={`${bebas.className} mt-2 bg-[#FF9100] text-black text-xl tracking-wider py-3 px-6 w-full rounded-sm hover:opacity-90 transition-opacity`}
+              >
+                Send Message
+              </button>
+
+            </form>
           </div>
+
         </div>
       </section>
 
