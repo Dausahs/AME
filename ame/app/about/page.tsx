@@ -1,5 +1,15 @@
 import React from 'react';
 import { Bebas_Neue, Inter } from 'next/font/google';
+import type { StaticImageData } from 'next/image';
+import aboutHeroBg from '@/asset/DSC01297.jpg';
+import rahmahImg from '@/asset/COMPANY HEADSHOT/Rahmah.png';
+import harithMikailImg from '@/asset/COMPANY HEADSHOT/Harithmikail.png';
+import firdausRosalanImg from '@/asset/COMPANY HEADSHOT/firdausrosalan.png';
+import zacImg from '@/asset/COMPANY HEADSHOT/zac.png';
+import zoraAkihitoImg from '@/asset/COMPANY HEADSHOT/zoraakihito.png';
+import irfanKhanImg from '@/asset/COMPANY HEADSHOT/Irfankhan.png';
+import daniaImg from '@/asset/COMPANY HEADSHOT/dania.png';
+import amirmirzaImg from '@/asset/COMPANY HEADSHOT/amirmirza.png';
 
 // Initialize fonts
 const bebas = Bebas_Neue({
@@ -11,21 +21,61 @@ const inter = Inter({
     subsets: ['latin']
 });
 
-export default function AboutUs() {
-    // Array to generate the 12 team members dynamically
-    const teamMembers = Array.from({ length: 12 }).map((_, index) => ({
-        name: "AMIR MIRZA",
-        role: "Chief Operating Officer",
-        image: "https://placehold.co/259x259/e5e7eb/6b7280?text=Team+Member"
-    }));
+const teamPlaceholder =
+    'https://placehold.co/259x259/e5e7eb/6b7280?text=Team+Member';
 
+type TeamMember = {
+    name: string;
+    role: string;
+    image?: StaticImageData;
+};
+
+// Flattened team members array sorted by operational hierarchy
+const teamMembers: TeamMember[] = [
+    { name: 'AMIR MIRZA', role: 'Chief Executive Officer', image: amirmirzaImg },
+    { name: 'RAHMAH', role: 'Business Operations Manager', image: rahmahImg },
+    { name: 'DANIA', role: 'Admin', image: daniaImg },
+    { name: 'IRFAN KHAN', role: 'Sales Manager', image: irfanKhanImg },
+    { name: 'FIRDAUS ROSALAN', role: 'Digital Marketing & Creative Executive', image: firdausRosalanImg },
+    { name: 'ZAC', role: 'Graphic Designer', image: zacImg },
+    { name: 'ZORA AKIHITO', role: 'Content Creator', image: zoraAkihitoImg },
+    { name: 'HARITH MIKAIL', role: 'Event Coordinator', image: harithMikailImg },
+];
+
+function TeamMemberCard({
+    member,
+    bebasClassName,
+}: {
+    member: TeamMember;
+    bebasClassName: string;
+}) {
+    return (
+        <div className="flex flex-col items-start w-full max-w-[259px]">
+            <div className="w-full max-w-[259px] aspect-square bg-gray-200 mb-4 overflow-hidden shrink-0">
+                <img
+                    src={member.image?.src ?? teamPlaceholder}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                />
+            </div>
+            <h3 className={`${bebasClassName} text-3xl text-white tracking-wide mb-1`}>
+                {member.name}
+            </h3>
+            <p className="text-gray-300 text-sm sm:text-base">
+                {member.role}
+            </p>
+        </div>
+    );
+}
+
+export default function AboutUs() {
     return (
         <main className={`w-full flex flex-col bg-[#092236] ${inter.className}`}>
 
             {/* 1. Hero Section */}
             <section
                 className="min-h-[500px] w-full relative flex flex-col items-center justify-center text-center px-6 sm:px-12 py-24 bg-cover bg-center"
-                style={{ backgroundImage: "url('https://placehold.co/1920x600/1e293b/ffffff?text=About+Us+Background')" }}
+                style={{ backgroundImage: `url('${aboutHeroBg.src}')` }}
             >
                 {/* Dark overlay: #092236 at 82% opacity */}
                 <div className="absolute inset-0 bg-[#092236]/[0.82] z-0"></div>
@@ -45,7 +95,6 @@ export default function AboutUs() {
                 <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
                     {/* Left Column: Heading */}
                     <div className="flex flex-col items-start">
-                        {/* w-fit ensures the container strictly hugs the text width */}
                         <div className="w-fit flex flex-col items-start">
                             <h2 className={`${bebas.className} text-5xl sm:text-6xl lg:text-7xl text-white uppercase leading-none tracking-wide`}>
                                 "Trust In Our Quality"
@@ -70,7 +119,6 @@ export default function AboutUs() {
 
                     {/* Section Heading */}
                     <div className="flex flex-col items-center mb-16">
-                        {/* w-fit ensures the container strictly hugs the text width */}
                         <div className="w-fit flex flex-col items-center">
                             <h2 className={`${bebas.className} text-5xl sm:text-6xl md:text-7xl text-white uppercase leading-none tracking-wide`}>
                                 Our Teams!
@@ -80,26 +128,14 @@ export default function AboutUs() {
                         </div>
                     </div>
 
-                    {/* Team Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-12 w-full justify-items-center sm:justify-items-start">
-                        {teamMembers.map((member, index) => (
-                            <div key={index} className="flex flex-col items-start w-full max-w-[259px]">
-                                {/* Image Frame - Responsive, max 259x259 */}
-                                <div className="w-full max-w-[259px] aspect-square bg-gray-200 mb-4 overflow-hidden shrink-0">
-                                    <img
-                                        src={member.image}
-                                        alt={member.name}
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
-                                {/* Member Info */}
-                                <h3 className={`${bebas.className} text-3xl text-white tracking-wide mb-1`}>
-                                    {member.name}
-                                </h3>
-                                <p className="text-gray-300 text-sm sm:text-base">
-                                    {member.role}
-                                </p>
-                            </div>
+                    {/* Unified Team Grid (Left-to-Right layout) */}
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-12 w-full justify-items-center sm:justify-items-start">
+                        {teamMembers.map((member) => (
+                            <TeamMemberCard
+                                key={member.name}
+                                member={member}
+                                bebasClassName={bebas.className}
+                            />
                         ))}
                     </div>
 

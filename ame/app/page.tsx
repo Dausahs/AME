@@ -1,6 +1,10 @@
 import React from 'react';
 import { Bebas_Neue, Inter } from 'next/font/google';
 import MalaysiaMap from '@/components/MalaysiaMap';
+import nationwideBg from '@/asset/DSC01279.jpg';
+import contactBg from '@/asset/DSC01203.jpg';
+import heroBg from '@/asset/DSC01558.jpg';
+import pastClientsBg from '@/asset/DSC01226.jpg';
 
 // Initialize fonts
 const bebas = Bebas_Neue({
@@ -26,7 +30,7 @@ export default function Home() {
       {/* 2. Hero / About Section - Target Height 700px */}
       <section
         className="min-h-[700px] w-full relative flex flex-col items-center justify-center text-center px-6 sm:px-12 py-20 bg-cover bg-center"
-        style={{ backgroundImage: "url('https://placehold.co/1920x700/1e293b/ffffff?text=Hero+Background')" }}
+        style={{ backgroundImage: `url('${heroBg.src}')` }}
       >
         {/* Custom shade overlay: #092236 at 82% opacity */}
         <div className="absolute inset-0 bg-[#092236]/[0.82] z-0"></div>
@@ -48,7 +52,7 @@ export default function Home() {
       {/* 3. Past Clients Section - Target Height 700px */}
       <section
         className="min-h-[700px] w-full relative flex items-center px-6 sm:px-12 lg:px-24 py-16 lg:py-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('https://placehold.co/1920x700/1e293b/ffffff?text=Past+Clients+Background')" }}
+        style={{ backgroundImage: `url('${pastClientsBg.src}')` }}
       >
         {/* Custom shade overlay: #092236 at 82% opacity */}
         <div className="absolute inset-0 bg-[#092236]/[0.82] z-0"></div>
@@ -75,7 +79,7 @@ export default function Home() {
       {/* 4. Scale & Locations Section - Target Height 500px */}
       <section
         className="min-h-[700px] w-full relative flex items-center px-6 sm:px-12 lg:px-24 py-16 bg-cover bg-center"
-        style={{ backgroundImage: "url('https://placehold.co/1920x500/1e293b/ffffff?text=Nationwide+Background')" }}
+        style={{ backgroundImage: `url('${nationwideBg.src}')` }}
       >
         {/* Custom shade overlay: #092236 at 82% opacity */}
         <div className="absolute inset-0 bg-[#092236]/[0.82] z-0"></div>
@@ -102,7 +106,7 @@ export default function Home() {
       {/* 5. Contact Us Section - Target Height 400px */}
       <section
         className="min-h-[500px] lg:min-h-[400px] w-full relative flex items-center px-6 sm:px-12 lg:px-24 py-16 lg:py-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('https://placehold.co/1920x400/1e293b/ffffff?text=Contact+Background')" }}
+        style={{ backgroundImage: `url('${contactBg.src}')` }}
       >
         {/* Custom shade overlay: #092236 at 82% opacity */}
         <div className="absolute inset-0 bg-[#092236]/[0.82] z-0"></div>
