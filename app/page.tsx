@@ -40,20 +40,22 @@ export default function Home() {
   return (
     <main className={`w-full flex flex-col bg-black ${inter.className}`}>
 
-      {/* 1. Introduction Section */}
-      <section className="min-h-[500px] w-full bg-[#e5e7eb] flex items-center justify-center p-6 text-center">
-        <p className="text-black font-medium text-lg md:text-xl">
-          Company Introduction Motion Graphic GIF
-        </p>
-      </section>
-
-      {/* 2. Hero / About Section */}
+      {/* 1. Hero / About Section - Dark Blue Shade with Center Content Layout */}
       <section
         className="min-h-[700px] w-full relative flex flex-col items-center justify-center text-center px-6 sm:px-12 py-20 bg-cover bg-center"
         style={{ backgroundImage: `url('${heroBg.src}')` }}
       >
+        {/* Deep blue brand shade overlay at 82% opacity */}
         <div className="absolute inset-0 bg-[#092236]/[0.82] z-0"></div>
-        <div className="z-10 max-w-4xl mx-auto flex flex-col items-center">
+
+        {/* Centered Content Track */}
+        <div className="z-10 max-w-4xl mx-auto flex flex-col items-center justify-center">
+          
+          {/* Logo Placeholder Grid Block in the dead middle */}
+          <div className="w-[140px] h-[140px] bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center mb-8 shadow-xl text-white text-xs uppercase tracking-widest font-medium">
+            Logo Place
+          </div>
+
           <h1 className={`${bebas.className} text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white uppercase tracking-wide leading-none mb-6`}>
             <span className="text-[#FF9100]">We Are</span> Malaysia's Premier<br className="hidden sm:block" />
             Event Production House
@@ -67,7 +69,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Past Clients Section */}
+      {/* 2. Past Clients Section */}
       <section
         className="min-h-[700px] w-full relative flex items-center px-6 sm:px-12 lg:px-24 py-16 lg:py-0 bg-cover bg-center"
         style={{ backgroundImage: `url('${pastClientsBg.src}')` }}
@@ -102,7 +104,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Scale & Locations Section */}
+      {/* 3. Scale & Locations Section */}
       <section
         className="min-h-[700px] w-full relative flex items-center px-6 sm:px-12 lg:px-24 py-16 bg-cover bg-center"
         style={{ backgroundImage: `url('${nationwideBg.src}')` }}
@@ -124,7 +126,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Contact Us Section */}
+      {/* 4. Contact Us Section */}
       <section
         className="min-h-[500px] lg:min-h-[400px] w-full relative flex items-center px-6 sm:px-12 lg:px-24 py-16 lg:py-0 bg-cover bg-center"
         style={{ backgroundImage: `url('${contactBg.src}')` }}

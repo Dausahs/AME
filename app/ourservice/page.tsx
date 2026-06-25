@@ -12,7 +12,7 @@ import eventVideosImg from '@/asset/service/Event Videos.jpg';
 import experientialImg from '@/asset/service/experential.jpg';
 import visualImg from '@/asset/service/visual.jpg';
 
-// 3. Client Partner Logos (Restored original folder string with spaces)
+// 3. Client Partner Logos (Using your exact case-sensitive folder path)
 import aseanLogo from '@/asset/client logo/asean-seeklogo.png';
 import averyLogo from '@/asset/client logo/Avery_Dennison_Logo.svg';
 import idGqVzLogo from '@/asset/client logo/id_gqVzS7r_logos.png';
@@ -25,7 +25,7 @@ import toyotaLogo from '@/asset/client logo/Toyota.svg';
 import worldfishLogo from '@/asset/client logo/worldfish-seeklogo.svg';
 import yahooLogo from '@/asset/client logo/Yahoo!_(2019).svg';
 
-// Initialize Fonts outside of the component to prevent re-initialization on hot-reload
+// Initialize Fonts outside of the component render scope
 const bebas = Bebas_Neue({
     weight: '400',
     subsets: ['latin']
@@ -35,7 +35,7 @@ const inter = Inter({
     subsets: ['latin']
 });
 
-// Static Datasets shifted outside of the main render scope to lift the processing strain off Next.js
+// Static array references
 const inlineLogos = [
     aseanLogo, averyLogo, idGqVzLogo, idPclLogo, lhdnmLogo, 
     petraLogo, mcebLogo, slbLogo, toyotaLogo, worldfishLogo, yahooLogo
@@ -52,6 +52,17 @@ const workSteps = [
 export default function OurService() {
     return (
         <main className={`w-full flex flex-col bg-[#092236] ${inter.className}`}>
+            
+            {/* Native CSS Injection compatible with Server Components */}
+            <style dangerouslySetInnerHTML={{__html: `
+                @keyframes marqueeLTR {
+                    0% { transform: translateX(-50%); }
+                    100% { transform: translateX(0%); }
+                }
+                .animate-custom-ltr {
+                    animation: marqueeLTR 30s linear infinite;
+                }
+            `}} />
 
             {/* 1. Hero Section */}
             <section
@@ -147,8 +158,10 @@ export default function OurService() {
                     <h2 className={`${bebas.className} text-5xl sm:text-6xl uppercase tracking-wide mb-6 text-right`}>
                         <span className="text-white">Our</span> <span className="text-[#092236]">Partners!</span>
                     </h2>
+                    
+                    {/* Low Opacity Translucent Track Container */}
                     <div className="w-full h-[120px] bg-[#092236]/30 border border-white/5 backdrop-blur-sm flex items-center relative rounded-md overflow-hidden px-4 shadow-xl">
-                        <div className="flex gap-16 animate-marquee whitespace-nowrap min-w-full items-center">
+                        <div className="flex gap-16 animate-custom-ltr whitespace-nowrap min-w-full items-center">
                             {inlineLogos.map((logo, idx) => (
                                 <img 
                                     key={`logo-${idx}`} 
