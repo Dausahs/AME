@@ -6,35 +6,53 @@ import contactBg from '@/asset/DSC01203.jpg';
 import heroBg from '@/asset/DSC01558.jpg';
 import pastClientsBg from '@/asset/DSC01226.jpg';
 
-// Initialize fonts
-const bebas = Bebas_Neue({
-  weight: '400',
-  subsets: ['latin']
-});
+// Import client logos safely matching exact filenames
+import aseanLogo from '@/asset/client logo/asean-seeklogo.png';
+import averyLogo from '@/asset/client logo/Avery_Dennison_Logo.svg';
+import idGqVzLogo from '@/asset/client logo/id_gqVzS7r_logos.png';
+import idPclLogo from '@/asset/client logo/idPcI-5vi8_logos.png';
+import lhdnmLogo from '@/asset/client logo/lhdnm-seeklogo.png';
+import petraLogo from '@/asset/client logo/logo-petra2.png';
+import mcebLogo from '@/asset/client logo/malaysia-convention-exhibition-bureau-seeklogo-2.svg';
+import slbLogo from '@/asset/client logo/SLB_Logo_2022.svg';
+import toyotaLogo from '@/asset/client logo/Toyota.svg';
+import worldfishLogo from '@/asset/client logo/worldfish-seeklogo.svg';
+import yahooLogo from '@/asset/client logo/Yahoo!_(2019).svg';
 
-const inter = Inter({
-  subsets: ['latin']
-});
+const bebas = Bebas_Neue({ weight: '400', subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
+  const clientLogos = [
+    { src: aseanLogo, alt: 'ASEAN Logo' },
+    { src: averyLogo, alt: 'Avery Dennison Logo' },
+    { src: idGqVzLogo, alt: 'Client Partner Logo' },
+    { src: idPclLogo, alt: 'Client Partner Logo' },
+    { src: lhdnmLogo, alt: 'LHDNM Logo' },
+    { src: petraLogo, alt: 'Petra Logo' },
+    { src: mcebLogo, alt: 'Malaysia Convention & Exhibition Bureau Logo' },
+    { src: slbLogo, alt: 'SLB Logo' },
+    { src: toyotaLogo, alt: 'Toyota Logo' },
+    { src: worldfishLogo, alt: 'WorldFish Logo' },
+    { src: yahooLogo, alt: 'Yahoo Logo' },
+  ];
+
   return (
     <main className={`w-full flex flex-col bg-black ${inter.className}`}>
 
-      {/* 1. Introduction Section - Target Height 500px */}
+      {/* 1. Introduction Section */}
       <section className="min-h-[500px] w-full bg-[#e5e7eb] flex items-center justify-center p-6 text-center">
         <p className="text-black font-medium text-lg md:text-xl">
           Company Introduction Motion Graphic GIF
         </p>
       </section>
 
-      {/* 2. Hero / About Section - Target Height 700px */}
+      {/* 2. Hero / About Section */}
       <section
         className="min-h-[700px] w-full relative flex flex-col items-center justify-center text-center px-6 sm:px-12 py-20 bg-cover bg-center"
         style={{ backgroundImage: `url('${heroBg.src}')` }}
       >
-        {/* Custom shade overlay: #092236 at 82% opacity */}
         <div className="absolute inset-0 bg-[#092236]/[0.82] z-0"></div>
-
         <div className="z-10 max-w-4xl mx-auto flex flex-col items-center">
           <h1 className={`${bebas.className} text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white uppercase tracking-wide leading-none mb-6`}>
             <span className="text-[#FF9100]">We Are</span> Malaysia's Premier<br className="hidden sm:block" />
@@ -49,12 +67,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Past Clients Section - Target Height 700px */}
+      {/* 3. Past Clients Section */}
       <section
         className="min-h-[700px] w-full relative flex items-center px-6 sm:px-12 lg:px-24 py-16 lg:py-0 bg-cover bg-center"
         style={{ backgroundImage: `url('${pastClientsBg.src}')` }}
       >
-        {/* Custom shade overlay: #092236 at 82% opacity */}
         <div className="absolute inset-0 bg-[#092236]/[0.82] z-0"></div>
 
         <div className="z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -69,28 +86,32 @@ export default function Home() {
               Partner With Us
             </button>
           </div>
-          {/* Client Logos Placeholder Box */}
-          <div className="bg-[#e5e7eb] w-full h-[300px] sm:h-[400px] flex items-center justify-center text-gray-500 font-medium text-sm rounded-sm z-10 relative">
-            PAST CLIENTS LOGO
+
+          {/* Low Opacity Dark Translucent Grid Background */}
+          <div className="bg-[#092236]/30 border border-white/5 backdrop-blur-sm w-full min-h-[300px] sm:min-h-[400px] grid grid-cols-3 sm:grid-cols-4 gap-4 p-6 items-center justify-items-center rounded-md shadow-2xl z-10 relative">
+            {clientLogos.map((logo, index) => (
+              <div key={index} className="w-full max-w-[100px] aspect-video relative flex items-center justify-center transition-transform duration-300 hover:scale-110">
+                <img 
+                  src={logo.src.src} 
+                  alt={logo.alt} 
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 4. Scale & Locations Section - Target Height 500px */}
+      {/* 4. Scale & Locations Section */}
       <section
         className="min-h-[700px] w-full relative flex items-center px-6 sm:px-12 lg:px-24 py-16 bg-cover bg-center"
         style={{ backgroundImage: `url('${nationwideBg.src}')` }}
       >
-        {/* Custom shade overlay: #092236 at 82% opacity */}
         <div className="absolute inset-0 bg-[#092236]/[0.82] z-0"></div>
-
         <div className="z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-          {/* Map Section - Interactive vector map */}
           <div className="relative w-full h-[350px] sm:h-[450px] lg:h-[600px] order-2 lg:order-1 z-10">
             <MalaysiaMap />
           </div>
-
           <div className="flex flex-col items-start lg:items-end text-left lg:text-right order-1 lg:order-2">
             <h2 className={`${bebas.className} text-4xl sm:text-5xl lg:text-6xl uppercase leading-none mb-4 tracking-wide`}>
               <span className="text-[#FF9100]">Nationwide Scale.</span><br />
@@ -103,14 +124,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Contact Us Section - Target Height 400px */}
+      {/* 5. Contact Us Section */}
       <section
         className="min-h-[500px] lg:min-h-[400px] w-full relative flex items-center px-6 sm:px-12 lg:px-24 py-16 lg:py-0 bg-cover bg-center"
         style={{ backgroundImage: `url('${contactBg.src}')` }}
       >
-        {/* Custom shade overlay: #092236 at 82% opacity */}
         <div className="absolute inset-0 bg-[#092236]/[0.82] z-0"></div>
-
         <div className="z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col items-start">
             <h2 className={`${bebas.className} text-5xl sm:text-6xl md:text-7xl text-white uppercase mb-4 tracking-wide`}>
@@ -121,45 +140,17 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Custom Styled Contact Form */}
           <div className="w-full z-10 relative bg-[#092236]/40 p-6 sm:p-8 rounded-md border border-gray-600/50 backdrop-blur-md shadow-xl">
             <form className="flex flex-col gap-5">
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full bg-transparent border-b border-gray-400/60 px-2 py-2 text-white placeholder-gray-300 focus:outline-none focus:border-[#FF9100] transition-colors"
-                />
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="w-full bg-transparent border-b border-gray-400/60 px-2 py-2 text-white placeholder-gray-300 focus:outline-none focus:border-[#FF9100] transition-colors"
-                />
+                <input type="text" placeholder="Your Name" className="w-full bg-transparent border-b border-gray-400/60 px-2 py-2 text-white placeholder-gray-300 focus:outline-none focus:border-[#FF9100] transition-colors" />
+                <input type="email" placeholder="Your Email" className="w-full bg-transparent border-b border-gray-400/60 px-2 py-2 text-white placeholder-gray-300 focus:outline-none focus:border-[#FF9100] transition-colors" />
               </div>
-
-              <input
-                type="text"
-                placeholder="Event Type / Location"
-                className="w-full bg-transparent border-b border-gray-400/60 px-2 py-2 text-white placeholder-gray-300 focus:outline-none focus:border-[#FF9100] transition-colors"
-              />
-
-              <textarea
-                placeholder="Tell us about your event requirements..."
-                rows={3}
-                className="w-full bg-transparent border-b border-gray-400/60 px-2 py-2 text-white placeholder-gray-300 focus:outline-none focus:border-[#FF9100] transition-colors resize-none"
-              ></textarea>
-
-              <button
-                type="button"
-                className={`${bebas.className} mt-2 bg-[#FF9100] text-black text-xl tracking-wider py-3 px-6 w-full rounded-sm hover:opacity-90 transition-opacity`}
-              >
-                Send Message
-              </button>
-
+              <input type="text" placeholder="Event Type / Location" className="w-full bg-transparent border-b border-gray-400/60 px-2 py-2 text-white placeholder-gray-300 focus:outline-none focus:border-[#FF9100] transition-colors" />
+              <textarea placeholder="Tell us about your event requirements..." rows={3} className="w-full bg-transparent border-b border-gray-400/60 px-2 py-2 text-white placeholder-gray-300 focus:outline-none focus:border-[#FF9100] transition-colors resize-none"></textarea>
+              <button type="button" className={`${bebas.className} mt-2 bg-[#FF9100] text-black text-xl tracking-wider py-3 px-6 w-full rounded-sm hover:opacity-90 transition-opacity`}>Send Message</button>
             </form>
           </div>
-
         </div>
       </section>
 
